@@ -1,8 +1,6 @@
 console.clear();
 
-
 const scene = new THREE.Scene();
-
 
 const camera = new THREE.PerspectiveCamera(
   59,
@@ -11,27 +9,21 @@ const camera = new THREE.PerspectiveCamera(
   1000
 );
 
-
 const renderer = new THREE.WebGLRenderer({
-  antialias: true, 
+  antialias: true,
 });
 
-
 renderer.setClearColor(new THREE.Color("rgb(0,0,0)"));
-
 
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
-
 camera.position.z = 1.8;
-
 
 const controls = new THREE.TrackballControls(camera, renderer.domElement);
 controls.noPan = true;
 controls.maxDistance = 3;
 controls.minDistance = 0.7;
-
 
 const group = new THREE.Group();
 scene.add(group);
@@ -39,7 +31,6 @@ scene.add(group);
 let heart = null;
 let sampler = null;
 let originHeart = null;
-
 
 new THREE.OBJLoader().load(
   "https://assets.codepen.io/127738/heart_2.obj",
@@ -50,7 +41,6 @@ new THREE.OBJLoader().load(
     heart.geometry.translate(0, -0.4, 0);
     group.add(heart);
 
- 
     heart.material = new THREE.MeshBasicMaterial({
       color: new THREE.Color("rgb(0,0,0)"),
     });
@@ -59,7 +49,7 @@ new THREE.OBJLoader().load(
     sampler = new THREE.MeshSurfaceSampler(heart).build();
 
     init();
- 
+
     renderer.setAnimationLoop(render);
   }
 );
@@ -69,7 +59,7 @@ let colors = [];
 const geometry = new THREE.BufferGeometry();
 
 const material = new THREE.PointsMaterial({
-  vertexColors: true, 
+  vertexColors: true,
   size: 0.009,
 });
 
@@ -133,7 +123,6 @@ gsap
     duration: 0.6,
     ease: "power3.out",
   });
-
 
 const maxZ = 0.23;
 const rateZ = 0.5;
